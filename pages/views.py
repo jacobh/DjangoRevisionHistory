@@ -5,7 +5,7 @@ from pages.forms import NewPageForm
 
 @render_to('pages/list.html')
 def list(request):
-	return {'pages': Page.objects.all()}
+	return {'pages': Page.objects.all().order_by('-id')}
 
 @render_to('pages/new.html')
 def new(request):
@@ -37,7 +37,7 @@ def revise(request, id):
 
 			page.parent = parent_page
 			page.save()
-			
+
 			return redirect(page)
 
 	return {'form': form}
