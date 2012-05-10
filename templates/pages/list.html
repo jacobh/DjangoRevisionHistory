@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<section class="pages">
+	<table>
+	<thead>
+		<tr>
+			<th>Page Title</th>
+			<th>Parent</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for page in pages %}
+			<tr>
+				<td><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></td>
+				{% if page.parent %}
+					<td><a href="{{ page.parent.get_absolute_url }}">{{ page.parent }}</a></td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+</section>
+{% endblock %}

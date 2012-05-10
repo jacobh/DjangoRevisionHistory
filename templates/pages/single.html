@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<section>
+	<h2>{{ page.title }}</h2>
+	<p>{{ page.content }}</p>
+	<a href="revise/">Revise</a>
+</section>
+<section>
+	<h2>History</h2>
+	<ul>
+	{% for parent in page.history %}
+		<li><a href="{{ parent.get_absolute_url }}">{{ parent }}</a></li>
+	{% endfor %}
+	</ul>
+</section>
+{% endblock %}
